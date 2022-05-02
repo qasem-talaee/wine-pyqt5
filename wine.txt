@@ -1,0 +1,3 @@
+wine,,/fdf/df
+mydods,,/hjhtest
+venv,,G:/Qasem Talaee/project/wine/venv
