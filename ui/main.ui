@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>327</height>
+    <width>470</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>391</width>
+      <width>455</width>
       <height>42</height>
      </rect>
     </property>
@@ -91,8 +91,8 @@
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>391</width>
-      <height>241</height>
+      <width>451</width>
+      <height>271</height>
      </rect>
     </property>
     <property name="title">
@@ -102,9 +102,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
-       <width>371</width>
-       <height>211</height>
+       <y>30</y>
+       <width>431</width>
+       <height>231</height>
       </rect>
      </property>
      <property name="widgetResizable">
@@ -118,8 +118,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>369</width>
-        <height>209</height>
+        <width>429</width>
+        <height>229</height>
        </rect>
       </property>
      </widget>
@@ -131,8 +131,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>409</width>
-     <height>21</height>
+     <width>470</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAbout_Me">

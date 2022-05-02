@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>468</height>
+    <width>701</width>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,11 +20,11 @@
       <x>10</x>
       <y>10</y>
       <width>681</width>
-      <height>431</height>
+      <height>441</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <property name="tabBarAutoHide">
      <bool>false</bool>
@@ -295,7 +295,7 @@
         <x>10</x>
         <y>10</y>
         <width>661</width>
-        <height>141</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -305,9 +305,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>19</y>
+         <y>30</y>
          <width>641</width>
-         <height>74</height>
+         <height>89</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -347,7 +347,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>100</y>
+         <y>130</y>
          <width>111</width>
          <height>31</height>
         </rect>
@@ -371,7 +371,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>160</y>
+        <y>190</y>
         <width>661</width>
         <height>31</height>
        </rect>
@@ -428,7 +428,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>200</y>
+        <y>230</y>
         <width>661</width>
         <height>31</height>
        </rect>
@@ -475,7 +475,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>240</y>
+        <y>270</y>
         <width>661</width>
         <height>31</height>
        </rect>
@@ -521,8 +521,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>700</width>
-     <height>21</height>
+     <width>701</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>
