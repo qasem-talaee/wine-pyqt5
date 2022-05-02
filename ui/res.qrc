@@ -3,5 +3,14 @@
         <file>icons/icons8-add-new-100.png</file>
         <file>icons/icons8-add-tag-64.png</file>
         <file>icons/icons8-software-installer-96.png</file>
+        <file>icons/icons8-config-58.png</file>
+        <file>icons/icons8-console-64.png</file>
+        <file>icons/icons8-control-panel-80.png</file>
+        <file>icons/icons8-registry-editor-96.png</file>
+        <file>icons/icons8-remove-96.png</file>
+        <file>icons/icons8-restart-58.png</file>
+        <file>icons/icons8-system-task-64.png</file>
+        <file>icons/icons8-uninstalling-updates-64.png</file>
+        <file>icons/icons8-powershell-48.png</file>
     </qresource>
 </RCC>
