@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>452</height>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,11 +20,11 @@
       <x>10</x>
       <y>10</y>
       <width>681</width>
-      <height>401</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="tabBarAutoHide">
      <bool>false</bool>
@@ -39,7 +39,7 @@
         <x>10</x>
         <y>10</y>
         <width>661</width>
-        <height>31</height>
+        <height>42</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -83,9 +83,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>50</y>
+        <y>60</y>
         <width>661</width>
-        <height>321</height>
+        <height>341</height>
        </rect>
       </property>
       <property name="title">
@@ -103,10 +103,44 @@
         <x>10</x>
         <y>10</y>
         <width>661</width>
-        <height>361</height>
+        <height>391</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="text">
+          <string>Registery Editor</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="text">
+          <string>Uninstaller</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="1">
         <widget class="QPushButton" name="pushButton_7">
          <property name="text">
@@ -144,7 +178,7 @@
        <item row="1" column="0">
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
-          <string>Kill Process</string>
+          <string>Kill All Processes</string>
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
@@ -209,14 +243,14 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QPushButton" name="pushButton_8">
+       <item row="4" column="0">
+        <widget class="QPushButton" name="pushButton_12">
          <property name="text">
-          <string>Uninstaller</string>
+          <string>File Explorer</string>
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</iconset>
+           <normaloff>:/newPrefix/icons/icons8-file-explorer-64.png</normaloff>:/newPrefix/icons/icons8-file-explorer-64.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -226,14 +260,14 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_9">
+       <item row="4" column="1">
+        <widget class="QPushButton" name="pushButton_13">
          <property name="text">
-          <string>Registery Editor</string>
+          <string>Internet Explorer</string>
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</iconset>
+           <normaloff>:/newPrefix/icons/icons8-internet-explorer-64.png</normaloff>:/newPrefix/icons/icons8-internet-explorer-64.png</iconset>
          </property>
          <property name="iconSize">
           <size>
