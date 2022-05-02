@@ -1,8 +1,14 @@
 from PyQt5 import uic, QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QGroupBox, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox
 import sys
 from libwine.wine import Wine
 import os
+import shutil
+from functools import partial
+
+from ui import res
+from bash import wine
+from lib import menu
 
 class WineMain(QMainWindow):
     
@@ -14,6 +20,8 @@ class WineMain(QMainWindow):
         uic.loadUi('ui/main.ui', self)
         self.pushButton_2.clicked.connect(self.add_new)
         self.pushButton.clicked.connect(self.add_exiting)
+        self.actionAbout_Me.triggered.connect(self.about_me)
+        self.pushButton_3.clicked.connect(self.install_wine)
         self.widget = QWidget()
         self.vb = QVBoxLayout()
         self.update_list()
@@ -21,15 +29,18 @@ class WineMain(QMainWindow):
     
     def update_list(self):
         name = []
-        dir = []
+        dire = []
         self.widget = QWidget()
         self.vb = QVBoxLayout()
+        self.hv = QHBoxLayout()
+        self.qb = QGroupBox()
         self.widget.destroyed
         with open('wine.txt', 'r') as f:
             for line in f:
-                detail = line.replace("\n", "").split(",,")
-                name.append(detail[0])
-                dir.append(detail[1])
+                if line != '\n':
+                    detail = line.replace("\n", "").split(",,")
+                    name.append(detail[0])
+                    dire.append(detail[1])
         if len(name) == 0:
             obj = QLabel("No Wine Prefix Found.Please create new.")
             self.vb.addWidget(obj)
@@ -40,11 +51,31 @@ class WineMain(QMainWindow):
             self.scrollArea.setWidget(self.widget)
         else:
             self.button_list = []
+            self.del_list = []
             for i, n in enumerate(name):
-                self.button_list.append(QPushButton(n))
-                self.vb.addWidget(self.button_list[i])
-            for i in range(len(dir)):
-                self.button_list[i].clicked.connect(lambda *args : self.open_wine(dir[i]))
+                self.hv = QHBoxLayout()
+                self.qb = QGroupBox()
+                but = QPushButton(n)
+                self.button_list.append(but)
+                del_but = QPushButton("Delete")
+                del_but.setStyleSheet("""
+                                        QPushButton {
+                                            background-color: rgb(255, 0, 0);
+                                            color: rgb(255, 255, 255);
+                                        }
+                                        QPushButton:hover {
+                                            background-color: rgb(255, 255, 255);
+                                            color: rgb(0, 0, 0);
+                                        }
+                                    """)
+                self.del_list.append(del_but)
+                self.hv.addWidget(self.button_list[i], stretch=1)
+                self.hv.addWidget(self.del_list[i])
+                self.qb.setLayout(self.hv)
+                self.vb.addWidget(self.qb)
+            for i in range(len(dire)):
+                self.button_list[i].clicked.connect(partial(self.open_wine, dire[i]))
+                self.del_list[i].clicked.connect(partial(self.del_wine, dire[i]))
             self.widget.setLayout(self.vb)
             self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
             self.scrollArea.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -52,7 +83,27 @@ class WineMain(QMainWindow):
             self.scrollArea.setWidget(self.widget)
     
     def open_wine(self, dir):
-        print(dir)
+        menu.Menu(dir)
+        self.close()
+    
+    def del_wine(self, dir):
+        msg = QMessageBox()
+        msg.setWindowTitle("Delete wine prefix")
+        msg.setText("Are you sure you want to do this?")
+        msg.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+        msg.setIcon(QMessageBox.Icon.Warning)
+        result = msg.exec_()
+        if result ==  QMessageBox.StandardButton.Ok:
+            if os.path.isdir(dir):
+                shutil.rmtree(dir)
+            with open("wine.txt", 'r') as f:
+                lines = f.readlines()
+            with open("wine.txt", 'w') as f:
+                for line in lines:
+                    detail = line.replace("\n", "").split(",,")[1]
+                    if detail != dir and line != '\n':
+                        f.write(line)
+            self.update_list()
     
     def add_new(self):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
@@ -66,7 +117,7 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                wineprefix.winecfg()
+                #wineprefix.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
@@ -74,11 +125,36 @@ class WineMain(QMainWindow):
     def add_exiting(self):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
         if dir != '':
-                #wineprefix = Wine(winepath=self.WINEPATH, wineprefix=dir, verbose=3)
+            try:
+                wineprefix = Wine(winepath=self.WINEPATH, wineprefix=dir, verbose=3)
+            except:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Please enter a valid wine prefix folder.")
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.exec_()
+            else:
                 #wineprefix.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
+            
+    def about_me(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("About Me")
+        msg.setTextFormat(QtCore.Qt.TextFormat.RichText)
+        msg.setText("Hi. I am Qasem Talaee.<br>"
+                    "I am a computer programmer.<br>"
+                    "I wrote this software for free, hoping that you will enjoy from gaming on linux.<br>"
+                    "<b><i>Enjoy It My Friend !</i></b><br><br>"
+                    "My Github : <a href='https://github.com/qasem-talaee'>https://github.com/qasem-talaee</a><br>"
+                    "My Website : <a href='http://qtle.ir'>http://qtle.ir</a><br>"
+                    "My Email : <a href='mailto:qasem.talaee1375@gmail.com'>qasem.talaee1375@gmail.com</a><br>")
+        msg.setIcon(QMessageBox.Icon.Information)
+        msg.exec_()
+        
+    def install_wine(self):
+        wine.InstallWine()
         
 app = QApplication(sys.argv)
 window = WineMain()

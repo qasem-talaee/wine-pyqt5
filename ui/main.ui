@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>409</width>
-    <height>307</height>
+    <height>327</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,10 +23,27 @@
       <x>10</x>
       <y>0</y>
       <width>391</width>
-      <height>31</height>
+      <height>42</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>Install Wine</string>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/newPrefix/icons/icons8-software-installer-96.png</normaloff>:/newPrefix/icons/icons8-software-installer-96.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
        <property name="styleSheet">
@@ -34,6 +51,16 @@
        </property>
        <property name="text">
         <string>Add New Prefix</string>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/newPrefix/icons/icons8-add-new-100.png</normaloff>:/newPrefix/icons/icons8-add-new-100.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -45,6 +72,16 @@
        <property name="text">
         <string>Add Exiting Prefix</string>
        </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/newPrefix/icons/icons8-add-tag-64.png</normaloff>:/newPrefix/icons/icons8-add-tag-64.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
       </widget>
      </item>
     </layout>
@@ -53,7 +90,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>50</y>
       <width>391</width>
       <height>241</height>
      </rect>
@@ -98,9 +135,23 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAbout_Me">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionAbout_Me"/>
+   </widget>
+   <addaction name="menuAbout_Me"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout_Me">
+   <property name="text">
+    <string>About Me</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="newPrefix">
+        <file>icons/icons8-add-new-100.png</file>
+        <file>icons/icons8-add-tag-64.png</file>
+        <file>icons/icons8-software-installer-96.png</file>
+    </qresource>
+</RCC>
