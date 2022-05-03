@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>701</width>
-    <height>492</height>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,11 +20,11 @@
       <x>10</x>
       <y>10</y>
       <width>681</width>
-      <height>441</height>
+      <height>571</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="tabBarAutoHide">
      <bool>false</bool>
@@ -79,18 +79,28 @@
        </item>
       </layout>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QScrollArea" name="scrollArea_2">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>60</y>
         <width>661</width>
-        <height>341</height>
+        <height>471</height>
        </rect>
       </property>
-      <property name="title">
-       <string>Select to Run</string>
+      <property name="widgetResizable">
+       <bool>true</bool>
       </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>659</width>
+         <height>469</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
@@ -103,7 +113,7 @@
         <x>10</x>
         <y>10</y>
         <width>661</width>
-        <height>391</height>
+        <height>521</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -313,7 +323,7 @@
         <x>10</x>
         <y>80</y>
         <width>661</width>
-        <height>321</height>
+        <height>451</height>
        </rect>
       </property>
       <property name="widgetResizable">
@@ -325,239 +335,10 @@
          <x>0</x>
          <y>0</y>
          <width>659</width>
-         <height>319</height>
+         <height>449</height>
         </rect>
        </property>
       </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Settings</string>
-     </attribute>
-     <widget class="QGroupBox" name="groupBox_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>661</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Add to Registery</string>
-      </property>
-      <widget class="QWidget" name="gridLayoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>641</width>
-         <height>89</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Key : </string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Data : </string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Value : </string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit"/>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_2"/>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_3"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QPushButton" name="pushButton_11">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>111</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-       <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/newPrefix/icons/icons8-add-new-100.png</normaloff>:/newPrefix/icons/icons8-add-new-100.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>190</y>
-        <width>661</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="lineWidth">
-          <number>0</number>
-         </property>
-         <property name="text">
-          <string>Windows Version :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox">
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="modelColumn">
-          <number>0</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>Windows 10</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Windows 8</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Windows 7</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Windows Vista</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Windows XP</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>230</y>
-        <width>661</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Virtual Desktop :</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_2">
-         <item>
-          <property name="text">
-           <string>On</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Off</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_3">
-         <item>
-          <property name="text">
-           <string>800x600</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1920x1080</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_4">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>270</y>
-        <width>661</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="lineWidth">
-          <number>0</number>
-         </property>
-         <property name="text">
-          <string>Set Dpi : </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="comboBox_4">
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="modelColumn">
-          <number>0</number>
-         </property>
-         <item>
-          <property name="text">
-           <string>90</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>120</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </widget>
    </widget>

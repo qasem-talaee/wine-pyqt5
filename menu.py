@@ -1,5 +1,5 @@
-from PyQt5 import uic, QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox
+from PyQt5 import uic, QtCore, QtGui
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox, QDialog, QLineEdit
 import sys
 import subprocess
 from functools import partial
@@ -25,9 +25,132 @@ class Menu(QMainWindow):
         self.pushButton_12.clicked.connect(self.explorer)
         self.pushButton_13.clicked.connect(self.iexplore)
         self.pushButton_10.clicked.connect(self.run_file)
+        self.pushButton.clicked.connect(self.add_new)
         self.widget = QWidget()
+        self.widget_app = QWidget()
         self.update_dep()
+        self.update_app()
         self.show()
+    
+    def add_new(self):
+        subprocess.call('python3 add.py', shell=True)
+        self.update_app()
+    
+    def update_app(self):
+        self.run_but = []
+        self.edit_but = []
+        self.del_but = []
+        names = []
+        imgs = []
+        pathes = []
+        self.widget_app = QWidget()
+        self.vb = QVBoxLayout()
+        with open('lib/list/list.txt', 'r') as f:
+            lines = f.readlines()
+            for i, line in enumerate(lines):
+                name, img, path = line.replace('\n', "").split(",,,")
+                names.append(name)
+                imgs.append(img)
+                pathes.append(path)
+                self.hv = QHBoxLayout()
+                self.qb = QGroupBox()
+                self.qb.setStyleSheet("""
+                                      QGroupBox{
+                                          background-color: rgb(119, 118, 123);
+                                          border: 2px solid gray; 
+                                          border-radius: 10px; 
+                                      }
+                                      """)
+                self.qb.setMaximumHeight(200)
+                label = QLabel(self)
+                pic = QtGui.QPixmap(img)
+                pic = pic.scaledToHeight(200)
+                label.setPixmap(pic)
+                self.vh_but = QVBoxLayout()
+                self.vh_but.addWidget(QLabel(name))
+                ## Buttons
+                run = QPushButton("Run")
+                run.setStyleSheet("""
+                                    QPushButton {
+                                        background-color: rgb(38, 162, 105);
+                                        color: rgb(255, 255, 255);
+                                    }
+                                    QPushButton:hover {
+                                        background-color: rgb(255, 255, 255);
+                                        color: rgb(0, 0, 0);
+                                    }
+                                """)
+                self.run_but.append(run)
+                self.vh_but.addWidget(run)
+                edit = QPushButton("Edit")
+                edit.setStyleSheet("""
+                                    QPushButton {
+                                        background-color: rgb(26, 95, 180);
+                                        color: rgb(255, 255, 255);
+                                    }
+                                    QPushButton:hover {
+                                        background-color: rgb(255, 255, 255);
+                                        color: rgb(0, 0, 0);
+                                    }
+                                """)
+                self.edit_but.append(edit)
+                self.vh_but.addWidget(edit)
+                del_ = QPushButton("Delete")
+                del_.setStyleSheet("""
+                                    QPushButton {
+                                        background-color: rgb(192, 28, 40);
+                                        color: rgb(255, 255, 255);
+                                    }
+                                    QPushButton:hover {
+                                        background-color: rgb(255, 255, 255);
+                                        color: rgb(0, 0, 0);
+                                    }
+                                """)
+                self.del_but.append(del_)
+                self.vh_but.addWidget(del_)
+                ## END Buttons
+                self.hv.addWidget(label, stretch=1)
+                self.hv.addLayout(self.vh_but)
+                self.qb.setLayout(self.hv)
+                self.vb.addWidget(self.qb)
+        for i in range(len(self.run_but)):
+            self.run_but[i].clicked.connect(partial(self.run_but_func, pathes[i]))
+            self.edit_but[i].clicked.connect(partial(self.edit_but_func, [names[i], imgs[i], pathes[i]]))
+            self.del_but[i].clicked.connect(partial(self.del_but_func, pathes[i]))
+        self.widget_app.setLayout(self.vb)
+        self.scrollArea_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.scrollArea_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setWidget(self.widget_app)
+    
+    def run_but_func(self, file):
+        self.MyWine.run_game(file)
+    
+    def edit_but_func(self, file):
+        subprocess.call('python3 add.py ' + '"' + file[0] + '" ' + '"' + file[1] + '" ' + '"' + file[2] + '"', shell=True)
+        self.update_app()
+    
+    def del_but_func(self, file):
+        msg = QMessageBox()
+        msg.setWindowTitle("Delete App or Game")
+        msg.setText("Are you sure you want to do this?")
+        msg.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+        msg.setIcon(QMessageBox.Icon.Warning)
+        result = msg.exec_()
+        if result ==  QMessageBox.StandardButton.Ok:
+            with open('lib/list/list.txt', 'r') as f:
+                lines = f.readlines()
+            with open('lib/list/list.txt', 'w') as f:
+                for line in lines:
+                    if line.replace('\n', "").split(",,,")[-1] != file:
+                        f.write('\n' + line.replace('\n', ""))
+            self.update_app()
+    
+    def open_dialog(self, name=None, img=None, path=None):
+        if name == None:
+            subprocess.call('python3 add.py', shell=True)
+        else:
+            pass
     
     def update_dep(self):
         self.install_but = []
@@ -43,7 +166,7 @@ class Menu(QMainWindow):
                 but = QPushButton("Install")
                 but.setStyleSheet("""
                                     QPushButton {
-                                        background-color: rgb(38, 162, 105);;
+                                        background-color: rgb(38, 162, 105);
                                         color: rgb(255, 255, 255);
                                     }
                                     QPushButton:hover {

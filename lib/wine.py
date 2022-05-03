@@ -22,7 +22,18 @@ class Wine:
                 subprocess.call(self.PATH + 'wine msiexec /i ' + file, shell=True)
             elif format == '.bat':
                 subprocess.call(self.PATH + 'wine start ' + file, shell=True)
-       
+    
+    def run_game(self, file):
+        format = self.get_format(file)
+        file = re.escape(file)
+        if format not in ['.exe', '.msi']:
+            return 0
+        else:
+            if format == '.exe':
+                subprocess.call(self.PATH + 'wine DXVK_HUD=1 ' + file, shell=True)
+            elif format == '.msi':
+                subprocess.call(self.PATH + 'wine msiexec /i DXVK_HUD=1 ' + file, shell=True)
+            
     def winecfg(self):
         subprocess.call(self.PATH + 'winecfg', shell=True)
         

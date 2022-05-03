@@ -107,8 +107,9 @@ class WineMain(QMainWindow):
     def add_new(self):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
         if dir != '':
+            my_wine = wine.Wine(dir=dir)
             try:
-                my_wine = wine.Wine(dir=dir)
+                my_wine.winecfg()
             except:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -116,7 +117,6 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                my_wine.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
@@ -124,8 +124,9 @@ class WineMain(QMainWindow):
     def add_exiting(self):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
         if dir != '':
+            my_wine = wine.Wine(dir=dir)
             try:
-                my_wine = wine.Wine(dir=dir)
+                my_wine.winecfg()
             except:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -133,7 +134,6 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                my_wine.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
