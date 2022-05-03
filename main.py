@@ -1,19 +1,18 @@
+import subprocess
 from PyQt5 import uic, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox
 import sys
-from libwine.wine import Wine
 import os
 import shutil
 from functools import partial
 
 from ui import res
-from bash import wine
-from lib import menu
+from lib import wine
 
 class WineMain(QMainWindow):
     
     def __init__(self):
-        self.WINEPATH = "/"
+        self.WINEPATH = "/usr/bin/wine"
         if not os.path.isfile('wine.txt'):
             open('wine.txt', 'w').close()
         super(WineMain, self).__init__()
@@ -83,7 +82,7 @@ class WineMain(QMainWindow):
             self.scrollArea.setWidget(self.widget)
     
     def open_wine(self, dir):
-        menu.Menu(dir)
+        subprocess.call('python3 menu.py ' + dir, shell=True)
         self.close()
     
     def del_wine(self, dir):
@@ -109,7 +108,7 @@ class WineMain(QMainWindow):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
         if dir != '':
             try:
-                wineprefix = Wine(winepath=self.WINEPATH, wineprefix=dir, verbose=3)
+                my_wine = wine.Wine(dir=dir)
             except:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -117,7 +116,7 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                #wineprefix.winecfg()
+                my_wine.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
@@ -126,7 +125,7 @@ class WineMain(QMainWindow):
         dir = str(QFileDialog.getExistingDirectory(self, "Select Target Directory"))
         if dir != '':
             try:
-                wineprefix = Wine(winepath=self.WINEPATH, wineprefix=dir, verbose=3)
+                my_wine = wine.Wine(dir=dir)
             except:
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
@@ -134,7 +133,7 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                #wineprefix.winecfg()
+                my_wine.winecfg()
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
@@ -154,7 +153,12 @@ class WineMain(QMainWindow):
         msg.exec_()
         
     def install_wine(self):
-        wine.InstallWine()
+        subprocess.call(['sh', './bash/wine.sh'])
+        msg = QMessageBox()
+        msg.setWindowTitle("Completed")
+        msg.setText("Installation completed successfully.")
+        msg.setIcon(QMessageBox.Icon.Information)
+        msg.exec_()
         
 app = QApplication(sys.argv)
 window = WineMain()
