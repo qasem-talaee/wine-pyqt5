@@ -1,1 +1,2 @@
 wine,,/home/qasem/wine
+My Games,,a

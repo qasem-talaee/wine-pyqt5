@@ -24,6 +24,8 @@ class Menu(QMainWindow):
         self.pushButton_9.clicked.connect(self.regedit)
         self.pushButton_12.clicked.connect(self.explorer)
         self.pushButton_13.clicked.connect(self.iexplore)
+        self.pushButton_15.clicked.connect(self.notepad)
+        self.pushButton_16.clicked.connect(self.wordpad)
         self.pushButton_10.clicked.connect(self.run_file)
         self.pushButton.clicked.connect(self.add_new)
         self.widget = QWidget()
@@ -256,6 +258,12 @@ class Menu(QMainWindow):
         
     def iexplore(self):
         self.MyWine.iexplore()
+    
+    def notepad(self):
+        self.MyWine.notepad()
+        
+    def wordpad(self):
+        self.MyWine.wordpad()
        
 app = QApplication(sys.argv)
 dir = sys.argv[1]

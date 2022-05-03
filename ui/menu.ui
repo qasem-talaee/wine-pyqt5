@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>701</width>
-    <height>631</height>
+    <height>610</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,57 +117,6 @@
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_9">
-         <property name="text">
-          <string>Registery Editor</string>
-         </property>
-         <property name="icon">
-          <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>64</width>
-           <height>64</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QPushButton" name="pushButton_8">
-         <property name="text">
-          <string>Uninstaller</string>
-         </property>
-         <property name="icon">
-          <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>64</width>
-           <height>64</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton_7">
-         <property name="text">
-          <string>Control Panel</string>
-         </property>
-         <property name="icon">
-          <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-control-panel-80.png</normaloff>:/newPrefix/icons/icons8-control-panel-80.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>64</width>
-           <height>64</height>
-          </size>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="1">
         <widget class="QPushButton" name="pushButton_5">
          <property name="text">
@@ -176,23 +125,6 @@
          <property name="icon">
           <iconset resource="res.qrc">
            <normaloff>:/newPrefix/icons/icons8-console-64.png</normaloff>:/newPrefix/icons/icons8-console-64.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>64</width>
-           <height>64</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Kill All Processes</string>
-         </property>
-         <property name="icon">
-          <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-remove-96.png</normaloff>:/newPrefix/icons/icons8-remove-96.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -219,14 +151,14 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_2">
+       <item row="2" column="1">
+        <widget class="QPushButton" name="pushButton_7">
          <property name="text">
-          <string>Winecfg</string>
+          <string>Control Panel</string>
          </property>
          <property name="icon">
           <iconset resource="res.qrc">
-           <normaloff>:/newPrefix/icons/icons8-config-58.png</normaloff>:/newPrefix/icons/icons8-config-58.png</iconset>
+           <normaloff>:/newPrefix/icons/icons8-control-panel-80.png</normaloff>:/newPrefix/icons/icons8-control-panel-80.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -244,6 +176,40 @@
          <property name="icon">
           <iconset resource="res.qrc">
            <normaloff>:/newPrefix/icons/icons8-restart-58.png</normaloff>:/newPrefix/icons/icons8-restart-58.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>Kill All Processes</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-remove-96.png</normaloff>:/newPrefix/icons/icons8-remove-96.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="text">
+          <string>Uninstaller</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</normaloff>:/newPrefix/icons/icons8-uninstalling-updates-64.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -278,6 +244,74 @@
          <property name="icon">
           <iconset resource="res.qrc">
            <normaloff>:/newPrefix/icons/icons8-internet-explorer-64.png</normaloff>:/newPrefix/icons/icons8-internet-explorer-64.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Winecfg</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-config-58.png</normaloff>:/newPrefix/icons/icons8-config-58.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="text">
+          <string>Registery Editor</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</normaloff>:/newPrefix/icons/icons8-registry-editor-96.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="pushButton_15">
+         <property name="text">
+          <string>Notepad</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-txt-64.png</normaloff>:/newPrefix/icons/icons8-txt-64.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>64</width>
+           <height>64</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="pushButton_16">
+         <property name="text">
+          <string>Wordpad</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/newPrefix/icons/icons8-notepad-64.png</normaloff>:/newPrefix/icons/icons8-notepad-64.png</iconset>
          </property>
          <property name="iconSize">
           <size>

@@ -44,7 +44,7 @@ class Wine:
         subprocess.call(self.PATH + 'wineboot -k', shell=True)
     
     def cmd(self):
-        subprocess.call(self.PATH + 'wine cmd', shell=True)
+        subprocess.call(self.PATH + 'wineconsole', shell=True)
         
     def task_manager(self):
         subprocess.call(self.PATH + 'wine taskmgr', shell=True)
@@ -63,3 +63,9 @@ class Wine:
         
     def iexplore(self):
         subprocess.call(self.PATH + 'wine iexplore', shell=True)
+        
+    def notepad(self):
+        subprocess.call(self.PATH + 'wine notepad', shell=True)
+        
+    def wordpad(self):
+        subprocess.call(self.PATH + 'wine wordpad', shell=True)
