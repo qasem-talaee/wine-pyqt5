@@ -50,71 +50,72 @@ class Menu(QMainWindow):
         with open('lib/list/list.txt', 'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
-                name, img, path = line.replace('\n', "").split(",,,")
-                names.append(name)
-                imgs.append(img)
-                pathes.append(path)
-                self.hv = QHBoxLayout()
-                self.qb = QGroupBox()
-                self.qb.setStyleSheet("""
-                                      QGroupBox{
-                                          background-color: rgb(119, 118, 123);
-                                          border: 2px solid gray; 
-                                          border-radius: 10px; 
-                                      }
-                                      """)
-                self.qb.setMaximumHeight(200)
-                label = QLabel(self)
-                pic = QtGui.QPixmap(img)
-                pic = pic.scaledToHeight(200)
-                label.setPixmap(pic)
-                self.vh_but = QVBoxLayout()
-                self.vh_but.addWidget(QLabel(name))
-                ## Buttons
-                run = QPushButton("Run")
-                run.setStyleSheet("""
-                                    QPushButton {
-                                        background-color: rgb(38, 162, 105);
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    QPushButton:hover {
-                                        background-color: rgb(255, 255, 255);
-                                        color: rgb(0, 0, 0);
-                                    }
-                                """)
-                self.run_but.append(run)
-                self.vh_but.addWidget(run)
-                edit = QPushButton("Edit")
-                edit.setStyleSheet("""
-                                    QPushButton {
-                                        background-color: rgb(26, 95, 180);
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    QPushButton:hover {
-                                        background-color: rgb(255, 255, 255);
-                                        color: rgb(0, 0, 0);
-                                    }
-                                """)
-                self.edit_but.append(edit)
-                self.vh_but.addWidget(edit)
-                del_ = QPushButton("Delete")
-                del_.setStyleSheet("""
-                                    QPushButton {
-                                        background-color: rgb(192, 28, 40);
-                                        color: rgb(255, 255, 255);
-                                    }
-                                    QPushButton:hover {
-                                        background-color: rgb(255, 255, 255);
-                                        color: rgb(0, 0, 0);
-                                    }
-                                """)
-                self.del_but.append(del_)
-                self.vh_but.addWidget(del_)
-                ## END Buttons
-                self.hv.addWidget(label, stretch=1)
-                self.hv.addLayout(self.vh_but)
-                self.qb.setLayout(self.hv)
-                self.vb.addWidget(self.qb)
+                if line != '\n':
+                    name, img, path = line.replace('\n', "").split(",,,")
+                    names.append(name)
+                    imgs.append(img)
+                    pathes.append(path)
+                    self.hv = QHBoxLayout()
+                    self.qb = QGroupBox()
+                    self.qb.setStyleSheet("""
+                                        QGroupBox{
+                                            background-color: rgb(119, 118, 123);
+                                            border: 2px solid gray; 
+                                            border-radius: 10px; 
+                                        }
+                                        """)
+                    self.qb.setMaximumHeight(200)
+                    label = QLabel(self)
+                    pic = QtGui.QPixmap(img)
+                    pic = pic.scaledToHeight(200)
+                    label.setPixmap(pic)
+                    self.vh_but = QVBoxLayout()
+                    self.vh_but.addWidget(QLabel(name))
+                    ## Buttons
+                    run = QPushButton("Run")
+                    run.setStyleSheet("""
+                                        QPushButton {
+                                            background-color: rgb(38, 162, 105);
+                                            color: rgb(255, 255, 255);
+                                        }
+                                        QPushButton:hover {
+                                            background-color: rgb(255, 255, 255);
+                                            color: rgb(0, 0, 0);
+                                        }
+                                    """)
+                    self.run_but.append(run)
+                    self.vh_but.addWidget(run)
+                    edit = QPushButton("Edit")
+                    edit.setStyleSheet("""
+                                        QPushButton {
+                                            background-color: rgb(26, 95, 180);
+                                            color: rgb(255, 255, 255);
+                                        }
+                                        QPushButton:hover {
+                                            background-color: rgb(255, 255, 255);
+                                            color: rgb(0, 0, 0);
+                                        }
+                                    """)
+                    self.edit_but.append(edit)
+                    self.vh_but.addWidget(edit)
+                    del_ = QPushButton("Delete")
+                    del_.setStyleSheet("""
+                                        QPushButton {
+                                            background-color: rgb(192, 28, 40);
+                                            color: rgb(255, 255, 255);
+                                        }
+                                        QPushButton:hover {
+                                            background-color: rgb(255, 255, 255);
+                                            color: rgb(0, 0, 0);
+                                        }
+                                    """)
+                    self.del_but.append(del_)
+                    self.vh_but.addWidget(del_)
+                    ## END Buttons
+                    self.hv.addWidget(label, stretch=1)
+                    self.hv.addLayout(self.vh_but)
+                    self.qb.setLayout(self.hv)
+                    self.vb.addWidget(self.qb)
         for i in range(len(self.run_but)):
             self.run_but[i].clicked.connect(partial(self.run_but_func, pathes[i]))
             self.edit_but[i].clicked.connect(partial(self.edit_but_func, [names[i], imgs[i], pathes[i]]))
