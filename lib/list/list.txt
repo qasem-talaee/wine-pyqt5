@@ -1,0 +1,2 @@
+
+Mirror's Edge,,,/home/qasem/wine/drive_c/game/Mirror's Edge/TdGame/Splash/PC/Splash.bmp,,,/home/qasem/wine/drive_c/game/Mirror's Edge/Binaries/MirrorsEdge.exe

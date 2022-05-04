@@ -6,6 +6,7 @@ class Wine:
     
     def __init__(self, dir):
         self.PATH = 'WINEPREFIX="' + dir + '" '
+        print(self.PATH)
     
     def get_format(self, file):
         return os.path.splitext(file)[-1].lower()
@@ -25,14 +26,13 @@ class Wine:
     
     def run_game(self, file):
         format = self.get_format(file)
-        file = re.escape(file)
         if format not in ['.exe', '.msi']:
             return 0
         else:
             if format == '.exe':
-                subprocess.call(self.PATH + 'wine DXVK_HUD=1 ' + file, shell=True)
+                subprocess.call(self.PATH + "DXVK_HUD=1 wine " + '"' + file + '"', shell=True)
             elif format == '.msi':
-                subprocess.call(self.PATH + 'wine msiexec /i DXVK_HUD=1 ' + file, shell=True)
+                subprocess.call(self.PATH + "DXVK_HUD=1 wine msiexec /i " + '"' + file + '"', shell=True)
             
     def winecfg(self):
         subprocess.call(self.PATH + 'winecfg', shell=True)

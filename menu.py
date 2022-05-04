@@ -59,7 +59,7 @@ class Menu(QMainWindow):
                     self.qb = QGroupBox()
                     self.qb.setStyleSheet("""
                                         QGroupBox{
-                                            background-color: rgb(119, 118, 123);
+                                            background-color: rgb(157, 163, 158);
                                             border: 2px solid gray; 
                                             border-radius: 10px; 
                                         }
