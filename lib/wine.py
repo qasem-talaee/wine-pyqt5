@@ -1,31 +1,30 @@
 import subprocess
 import os
-import re
 
 class Wine:
     
     def __init__(self, dir):
         self.PATH = 'WINEPREFIX="' + dir + '" '
-        print(self.PATH)
     
     def get_format(self, file):
         return os.path.splitext(file)[-1].lower()
     
     def run_file(self, file):
         format = self.get_format(file)
-        file = re.escape(file)
+        file = file.replace('"', '\"')
         if format not in ['.exe', '.msi', '.bat']:
             return 0
         else:
             if format == '.exe':
-                subprocess.call(self.PATH + 'wine ' + file, shell=True)
+                subprocess.call(self.PATH + 'wine ' + '"' + file + '"', shell=True)
             elif format == '.msi':
-                subprocess.call(self.PATH + 'wine msiexec /i ' + file, shell=True)
+                subprocess.call(self.PATH + 'wine msiexec /i ' + '"' + file + '"', shell=True)
             elif format == '.bat':
-                subprocess.call(self.PATH + 'wine start ' + file, shell=True)
+                subprocess.call(self.PATH + 'wine start ' + '"' + file + '"', shell=True)
     
     def run_game(self, file):
         format = self.get_format(file)
+        file = file.replace('"', '\"')
         if format not in ['.exe', '.msi']:
             return 0
         else:
