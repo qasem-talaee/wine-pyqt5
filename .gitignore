@@ -1,3 +1,4 @@
+*.log
 venv/
 test/
 .qt_for_python/

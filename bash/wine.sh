@@ -10,5 +10,5 @@ sudo dpkg --add-architecture i386
 #sudo apt update
 #sudo apt install winehq-staging --install-recommends
 sudo apt install --install-recommends wine-stable
-sudo apt install mesa-vulkan-drivers mesa-vulkan-drivers:i386 libvulkan1 libvulkan1:i386 -y
+sudo apt install mesa-vulkan-drivers mesa-vulkan-drivers:i386 libvulkan1 libvulkan1:i386 *vulkan* *dxvk* -y
 wine --version

@@ -1,2 +1,0 @@
-
-wine,,/home/qasem/wine
