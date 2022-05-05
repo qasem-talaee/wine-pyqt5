@@ -12,9 +12,10 @@ from lib import wine
 class WineMain(QMainWindow):
     
     def __init__(self):
-        self.WINEPATH = "/usr/bin/wine"
         if not os.path.isfile('wine.txt'):
             open('wine.txt', 'w').close()
+        if not os.path.isfile('lib/link/link.txt'):
+            open('lib/link/link.txt', 'w').close()
         super(WineMain, self).__init__()
         uic.loadUi('ui/main.ui', self)
         self.pushButton_2.clicked.connect(self.add_new)
@@ -82,8 +83,8 @@ class WineMain(QMainWindow):
             self.scrollArea.setWidget(self.widget)
     
     def open_wine(self, dir):
-        subprocess.call('python3 menu.py ' + dir, shell=True)
         self.close()
+        subprocess.call('python3 menu.py ' + dir, shell=True)
     
     def del_wine(self, dir):
         msg = QMessageBox()
@@ -99,9 +100,10 @@ class WineMain(QMainWindow):
                 lines = f.readlines()
             with open("wine.txt", 'w') as f:
                 for line in lines:
-                    detail = line.replace("\n", "").split(",,")[1]
-                    if detail != dir and line != '\n':
-                        f.write(line)
+                    if line != '\n':
+                        detail = line.replace("\n", "").split(",,")[1]
+                        if detail != dir:
+                            f.write(line)
             self.update_list()
     
     def add_new(self):

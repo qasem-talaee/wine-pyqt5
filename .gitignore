@@ -1,4 +1,5 @@
 *.log
+wine.txt
 venv/
 test/
 .qt_for_python/

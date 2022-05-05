@@ -1,8 +1,11 @@
+from lib2to3.pgen2.grammar import opmap_raw
+from unicodedata import name
 from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox, QDialog, QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox
 import sys
 import subprocess
 from functools import partial
+import os
 
 from ui import res
 from lib import vulkan, wine
@@ -13,6 +16,10 @@ class Menu(QMainWindow):
         super(Menu, self).__init__()
         uic.loadUi('ui/menu.ui', self)
         self.MyWine = wine.Wine(dir=dir)
+        if not os.path.isfile("lib/list/list-{name}.txt".format(name=dir.split("/")[-1])):
+            os.mkdir('lib/list')
+            open("lib/list/list-{name}.txt".format(name=dir.split("/")[-1]), 'w').close()
+        self.list_file = "lib/list/list-{name}.txt".format(name=dir.split("/")[-1])
         self.pushButton_14.clicked.connect(self.install_vulkan)
         self.pushButton_2.clicked.connect(self.open_winecfg)
         self.pushButton_3.clicked.connect(self.restart)
@@ -28,14 +35,19 @@ class Menu(QMainWindow):
         self.pushButton_16.clicked.connect(self.wordpad)
         self.pushButton_10.clicked.connect(self.run_file)
         self.pushButton.clicked.connect(self.add_new)
+        self.pushButton_11.clicked.connect(self.back)
         self.widget = QWidget()
         self.widget_app = QWidget()
         self.update_dep()
         self.update_app()
         self.show()
     
+    def back(self):
+        self.close()
+        subprocess.call('python3 main.py ' + dir, shell=True)
+    
     def add_new(self):
-        subprocess.call('python3 add.py', shell=True)
+        subprocess.call('python3 add.py ' + '"' + self.list_file + '"', shell=True)
         self.update_app()
     
     def update_app(self):
@@ -47,7 +59,7 @@ class Menu(QMainWindow):
         pathes = []
         self.widget_app = QWidget()
         self.vb = QVBoxLayout()
-        with open('lib/list/list.txt', 'r') as f:
+        with open(self.list_file, 'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
                 if line != '\n':
@@ -130,7 +142,7 @@ class Menu(QMainWindow):
         self.MyWine.run_game(file)
     
     def edit_but_func(self, file):
-        subprocess.call('python3 add.py ' + '"' + file[0] + '" ' + '"' + file[1] + '" ' + '"' + file[2] + '"', shell=True)
+        subprocess.call('python3 add.py ' + '"' + self.list_file + '" ' + '"' + file[0] + '" ' + '"' + file[1] + '" ' + '"' + file[2] + '"', shell=True)
         self.update_app()
     
     def del_but_func(self, file):
@@ -141,9 +153,9 @@ class Menu(QMainWindow):
         msg.setIcon(QMessageBox.Icon.Warning)
         result = msg.exec_()
         if result ==  QMessageBox.StandardButton.Ok:
-            with open('lib/list/list.txt', 'r') as f:
+            with open(self.list_file, 'r') as f:
                 lines = f.readlines()
-            with open('lib/list/list.txt', 'w') as f:
+            with open(self.list_file, 'w') as f:
                 for line in lines:
                     if line.replace('\n', "").split(",,,")[-1] != file:
                         f.write('\n' + line.replace('\n', ""))

@@ -17,5 +17,6 @@
         <file>icons/icons8-3d-64.png</file>
         <file>icons/icons8-notepad-64.png</file>
         <file>icons/icons8-txt-64.png</file>
+        <file>icons/icons8-back-64.png</file>
     </qresource>
 </RCC>

@@ -1,23 +1,22 @@
-from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox, QDialog, QLineEdit
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 import sys
-import subprocess
-from functools import partial
 
 class Add(QMainWindow):
     
     def __init__(self):
         super(Add, self).__init__()
         uic.loadUi('ui/add.ui', self)
-        if len(sys.argv) == 1:
+        self.link_file = sys.argv[1]
+        if len(sys.argv) == 2:
             self.name = ''
             self.img = ''
             self.path = ''
             self.status = 'add'
         else:
-            self.name = sys.argv[1]
-            self.img = sys.argv[2]
-            self.path = sys.argv[3]
+            self.name = sys.argv[2]
+            self.img = sys.argv[3]
+            self.path = sys.argv[4]
             self.status = 'edit'
             self.lineEdit.setText(self.name)
             self.lineEdit_2.setText(self.img)
@@ -41,6 +40,7 @@ class Add(QMainWindow):
         file = str(QFileDialog.getOpenFileName(self, "Select Target Directory")[0])
         if file != '':
             self.path = file
+            self.new_path = file
             self.lineEdit_3.setText(file)
             
     def add(self):
@@ -57,29 +57,30 @@ class Add(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                with open('lib/list/list.txt', 'a') as f:
+                with open(self.link_file, 'a') as f:
                     f.write("\n" + self.name + ",,," + self.img + ",,," + self.path)
                 self.close()
         if self.status == 'edit':
             self.name = self.lineEdit.text()
             self.img = self.lineEdit_2.text()
-            self.path = self.lineEdit_3.text()
-            if self.name == '' or self.img == '' or self.path == '':
+            self.new_path = self.lineEdit_3.text()
+            if self.name == '' or self.img == '' or self.new_path == '':
                 msg = QMessageBox()
                 msg.setWindowTitle("Error")
                 msg.setText("Please enter informtion.")
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
-                with open('lib/list/list.txt', 'r') as f:
+                with open(self.link_file, 'r') as f:
                     lines = f.readlines()
-                with open('lib/list/list.txt', 'w') as f:
+                with open(self.link_file, 'w') as f:
                     for line in lines:
-                        old_path = line.replace("\n", "").split(",,,")[2]
-                        if old_path == self.path and line != '\n':
-                            f.write(self.name + ",,," + self.img + ",,," + self.path)
-                        else:
-                            f.write(line)
+                        if line != '\n':
+                            old_path = line.replace("\n", "").split(",,,")[2]
+                            if self.path == old_path:
+                                f.write(self.name + ",,," + self.img + ",,," + self.new_path)
+                            else:
+                                f.write(line)
                 self.close()
                 
         

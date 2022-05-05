@@ -55,3 +55,14 @@ x86 vcredist2019,,https://aka.ms/vs/16/release/VC_redist.x86.exe
 x64 vcredist2019,,https://aka.ms/vs/16/release/VC_redist.x64.exe
 vcredist6,,https://download.microsoft.com/download/vc60pro/Update/2/W9XNT4/EN-US/VC6RedistSetup_deu.exe
 vcredist6sp6,,https://www.ddsystem.com.br/update/setup/vb6+sp6/VS6SP6.EXE
+font : andale32,,https://mirrors.kernel.org/gentoo/distfiles/andale32.exe
+font : arial32,,https://mirrors.kernel.org/gentoo/distfiles/arial32.exe
+font : arialb32,,https://mirrors.kernel.org/gentoo/distfiles/arialb32.exe
+font : comic32,,https://mirrors.kernel.org/gentoo/distfiles/comic32.exe
+font : courie32,,https://mirrors.kernel.org/gentoo/distfiles/courie32.exe
+font : georgi32,,https://mirrors.kernel.org/gentoo/distfiles/georgi32.exe
+font : impact32,,https://mirrors.kernel.org/gentoo/distfiles/impact32.exe
+font : times32,,https://mirrors.kernel.org/gentoo/distfiles/times32.exe
+font : trebuc32,,https://mirrors.kernel.org/gentoo/distfiles/trebuc32.exe
+font : verdan32,,https://mirrors.kernel.org/gentoo/distfiles/verdan32.exe
+font : webdin32,,https://mirrors.kernel.org/gentoo/distfiles/webdin32.exe
