@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Wine Prefix Manager</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/newPrefix/icons/icons8-gamer-64.png</normaloff>:/newPrefix/icons/icons8-gamer-64.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
