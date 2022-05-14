@@ -16,8 +16,9 @@ class Menu(QMainWindow):
         super(Menu, self).__init__()
         uic.loadUi('ui/menu.ui', self)
         self.MyWine = wine.Wine(dir=dir)
+        if not os.path.isdir('lib/list'):
+            os.mkdir('libb/list')
         if not os.path.isfile("lib/list/list-{name}.txt".format(name=dir.split("/")[-1])):
-            os.mkdir('lib/list')
             open("lib/list/list-{name}.txt".format(name=dir.split("/")[-1]), 'w').close()
         self.list_file = "lib/list/list-{name}.txt".format(name=dir.split("/")[-1])
         self.pushButton_14.clicked.connect(self.install_vulkan)
