@@ -12,6 +12,7 @@ class Wine:
     def run_file(self, file):
         format = self.get_format(file)
         file = file.replace('"', '\"')
+        os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi', '.bat']:
             return 0
         else:
@@ -25,6 +26,7 @@ class Wine:
     def run_game(self, file):
         format = self.get_format(file)
         file = file.replace('"', '\"')
+        os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi']:
             return 0
         else:
