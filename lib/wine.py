@@ -14,6 +14,7 @@ class Wine:
         file = file.replace('"', '\"')
         os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi', '.bat']:
+            os.chdir(os.getcwd())
             return 0
         else:
             if format == '.exe':
@@ -22,18 +23,21 @@ class Wine:
                 subprocess.call(self.PATH + 'wine msiexec /i ' + '"' + file + '"', shell=True)
             elif format == '.bat':
                 subprocess.call(self.PATH + 'wine start ' + '"' + file + '"', shell=True)
+            os.chdir(os.getcwd())
     
     def run_game(self, file):
         format = self.get_format(file)
         file = file.replace('"', '\"')
         os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi']:
+            os.chdir(os.getcwd())
             return 0
         else:
             if format == '.exe':
                 subprocess.call(self.PATH + "DXVK_HUD=1 wine " + '"' + file + '"', shell=True)
             elif format == '.msi':
                 subprocess.call(self.PATH + "DXVK_HUD=1 wine msiexec /i " + '"' + file + '"', shell=True)
+            os.chdir(os.getcwd())
             
     def winecfg(self):
         subprocess.call(self.PATH + 'winecfg', shell=True)
