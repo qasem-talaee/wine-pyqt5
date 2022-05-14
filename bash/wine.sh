@@ -26,5 +26,5 @@ sudo $pack update
 sudo $pack install software-properties-common apt-transport-https wget dpkg -y
 sudo dpkg --add-architecture i386
 sudo $pack install --install-recommends wine-stable -y
-sudo $pack install mesa-vulkan-drivers mesa-vulkan-drivers:i386 libvulkan1 libvulkan1:i386 *vulkan* *dxvk* -y
+sudo $pack install mesa-vulkan-drivers mesa-vulkan-drivers:i386 libvulkan1 libvulkan1:i386 winbind *vulkan* *dxvk* -y
 wine --version

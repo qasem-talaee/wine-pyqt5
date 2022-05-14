@@ -10,5 +10,5 @@ wget -P download "$url"
 tar -xf download/"$name" -C download
 
 dir=$(tar -tf download/"$name" | head -1)
-var=$(WINEPREFIX="$wine" download/"$dir"setup* install)
+var=$(WINEPREFIX="$wine" download/"$dir"*setup* install)
 echo "$var"
