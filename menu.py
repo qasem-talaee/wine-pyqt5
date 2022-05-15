@@ -235,13 +235,14 @@ class Menu(QMainWindow):
     
     def run_file(self):
         file = str(QFileDialog.getOpenFileName(self, "Select Target Directory")[0])
-        result = self.MyWine.run_file(file)
-        if result == 0:
-            msg = QMessageBox()
-            msg.setWindowTitle("Error")
-            msg.setText("Please enter a valid windows executable file.")
-            msg.setIcon(QMessageBox.Icon.Warning)
-            msg.exec_()
+        if file != '':
+            result = self.MyWine.run_file(file)
+            if result == 0:
+                msg = QMessageBox()
+                msg.setWindowTitle("Error")
+                msg.setText("Please enter a valid windows executable file.")
+                msg.setIcon(QMessageBox.Icon.Warning)
+                msg.exec_()
     
     def open_winecfg(self):
         self.MyWine.winecfg()
