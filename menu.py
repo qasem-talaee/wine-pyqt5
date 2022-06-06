@@ -143,6 +143,7 @@ class Menu(QMainWindow):
         self.MyWine.run_game(file)
     
     def edit_but_func(self, file):
+        os.chdir(os.getcwd())
         subprocess.call('python3 add.py ' + '"' + self.list_file + '" ' + '"' + file[0] + '" ' + '"' + file[1] + '" ' + '"' + file[2] + '"', shell=True)
         self.update_app()
     
@@ -164,6 +165,7 @@ class Menu(QMainWindow):
     
     def open_dialog(self, name=None, img=None, path=None):
         if name == None:
+            os.chdir(os.getcwd())
             subprocess.call('python3 add.py', shell=True)
         else:
             pass
@@ -209,6 +211,7 @@ class Menu(QMainWindow):
         msg.setText("Please wait...")
         msg.setIcon(QMessageBox.Icon.Information)
         msg.exec_()
+        os.chdir(os.getcwd())
         subprocess.call(['bash/download.sh', url])
         name = url.split("/")[-1]
         self.MyWine.run_file("download/" + name)
@@ -226,6 +229,7 @@ class Menu(QMainWindow):
         msg.exec_()
         links = vulkan.Vulkan().get_list()
         for link in links:
+            os.chdir(os.getcwd())
             subprocess.call(['bash/vulkan.sh', "/home/qasem/wine", link, link.split("/")[-1]])
         msg = QMessageBox()
         msg.setWindowTitle("Completed")
