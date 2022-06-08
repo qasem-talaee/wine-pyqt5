@@ -8,7 +8,7 @@ class Vulkan:
         self.link_list = [
             'https://github.com/doitsujin/dxvk/releases',
             'https://github.com/HansKristian-Work/vkd3d-proton/releases',
-            'https://github.com/Kron4ek/FAudio-Builds/releases',
+            #'https://github.com/Kron4ek/FAudio-Builds/releases',
             #'https://github.com/jp7677/dxvk-nvapi/releases',
             #'https://github.com/ishitatsuyuki/LatencyFleX/releases',
         ]
