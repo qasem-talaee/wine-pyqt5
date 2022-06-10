@@ -4,7 +4,6 @@ import sys
 import subprocess
 from functools import partial
 import os
-import sys
 
 from ui import res
 from lib import vulkan, wine
