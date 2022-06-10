@@ -14,35 +14,35 @@ class Wine:
         file = file.replace('"', '\"')
         os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi', '.bat']:
-            os.chdir(os.getcwd())
+            os.chdir(sys.path[0])
             return 0
         else:
             if format == '.exe':
                 subprocess.call(self.PATH + 'wine ' + '"' + file + '"', shell=True)
-                os.chdir(os.getcwd())
+                os.chdir(sys.path[0])
             elif format == '.msi':
                 subprocess.call(self.PATH + 'wine msiexec /i ' + '"' + file + '"', shell=True)
-                os.chdir(os.getcwd())
+                os.chdir(sys.path[0])
             elif format == '.bat':
                 subprocess.call(self.PATH + 'wine start ' + '"' + file + '"', shell=True)
-                os.chdir(os.getcwd())
-            os.chdir(os.getcwd())
+                os.chdir(sys.path[0])
+            os.chdir(sys.path[0])
     
     def run_game(self, file):
         format = self.get_format(file)
         file = file.replace('"', '\"')
         os.chdir(file.replace(file.split("/")[-1], ""))
         if format not in ['.exe', '.msi']:
-            os.chdir(os.getcwd())
+            os.chdir(sys.path[0])
             return 0
         else:
             if format == '.exe':
                 subprocess.call(self.PATH + "DXVK_HUD=1 wine " + '"' + file + '"', shell=True)
-                os.chdir(os.getcwd())
+                os.chdir(sys.path[0])
             elif format == '.msi':
                 subprocess.call(self.PATH + "DXVK_HUD=1 wine msiexec /i " + '"' + file + '"', shell=True)
-                os.chdir(os.getcwd())
-            os.chdir(os.getcwd())
+                os.chdir(sys.path[0])
+            os.chdir(sys.path[0])
             
     def winecfg(self):
         subprocess.call(self.PATH + 'winecfg', shell=True)

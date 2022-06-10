@@ -1,11 +1,10 @@
-from lib2to3.pgen2.grammar import opmap_raw
-from unicodedata import name
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QMessageBox, QVBoxLayout, QWidget, QHBoxLayout, QGroupBox
 import sys
 import subprocess
 from functools import partial
 import os
+import sys
 
 from ui import res
 from lib import vulkan, wine
@@ -45,9 +44,11 @@ class Menu(QMainWindow):
     
     def back(self):
         self.close()
+        os.chdir(sys.path[0])
         subprocess.call('python3 main.py ' + dir, shell=True)
     
     def add_new(self):
+        os.chdir(sys.path[0])
         subprocess.call('python3 add.py ' + '"' + self.list_file + '"', shell=True)
         self.update_app()
     
@@ -143,7 +144,7 @@ class Menu(QMainWindow):
         self.MyWine.run_game(file)
     
     def edit_but_func(self, file):
-        os.chdir(os.getcwd())
+        os.chdir(sys.path[0])
         subprocess.call('python3 add.py ' + '"' + self.list_file + '" ' + '"' + file[0] + '" ' + '"' + file[1] + '" ' + '"' + file[2] + '"', shell=True)
         self.update_app()
     
@@ -155,6 +156,7 @@ class Menu(QMainWindow):
         msg.setIcon(QMessageBox.Icon.Warning)
         result = msg.exec_()
         if result ==  QMessageBox.StandardButton.Ok:
+            os.chdir(sys.path[0])
             with open(self.list_file, 'r') as f:
                 lines = f.readlines()
             with open(self.list_file, 'w') as f:
@@ -165,7 +167,7 @@ class Menu(QMainWindow):
     
     def open_dialog(self, name=None, img=None, path=None):
         if name == None:
-            os.chdir(os.getcwd())
+            os.chdir(sys.path[0])
             subprocess.call('python3 add.py', shell=True)
         else:
             pass
@@ -174,6 +176,7 @@ class Menu(QMainWindow):
         self.install_but = []
         urls = []
         self.vb = QVBoxLayout()
+        os.chdir(sys.path[0])
         with open('lib/link/link.txt', 'r') as f:
             lines = f.readlines()
             for i, line in enumerate(lines):
@@ -211,7 +214,7 @@ class Menu(QMainWindow):
         msg.setText("Please wait...")
         msg.setIcon(QMessageBox.Icon.Information)
         msg.exec_()
-        os.chdir(os.getcwd())
+        os.chdir(sys.path[0])
         subprocess.call(['bash/download.sh', url])
         name = url.split("/")[-1]
         self.MyWine.run_file("download/" + name)
@@ -229,7 +232,7 @@ class Menu(QMainWindow):
         msg.exec_()
         links = vulkan.Vulkan().get_list()
         for link in links:
-            os.chdir(os.getcwd())
+            os.chdir(sys.path[0])
             subprocess.call(['bash/vulkan.sh', "/home/qasem/wine", link, link.split("/")[-1]])
         msg = QMessageBox()
         msg.setWindowTitle("Completed")

@@ -35,6 +35,7 @@ class WineMain(QMainWindow):
         self.hv = QHBoxLayout()
         self.qb = QGroupBox()
         self.widget.destroyed
+        os.chdir(sys.path[0])
         with open('wine.txt', 'r') as f:
             for line in f:
                 if line != '\n':
@@ -84,6 +85,7 @@ class WineMain(QMainWindow):
     
     def open_wine(self, dir):
         self.close()
+        os.chdir(sys.path[0])
         subprocess.call('python3 menu.py ' + dir, shell=True)
     
     def del_wine(self, dir):
@@ -94,6 +96,7 @@ class WineMain(QMainWindow):
         msg.setIcon(QMessageBox.Icon.Warning)
         result = msg.exec_()
         if result ==  QMessageBox.StandardButton.Ok:
+            os.chdir(sys.path[0])
             if os.path.isdir(dir):
                 shutil.rmtree(dir)
             with open("wine.txt", 'r') as f:
@@ -119,6 +122,7 @@ class WineMain(QMainWindow):
                 msg.setIcon(QMessageBox.Icon.Warning)
                 msg.exec_()
             else:
+                os.chdir(sys.path[0])
                 with open('wine.txt', 'a') as f:
                     f.write('\n' + dir.split("/")[-1] + ",," + dir)
                 self.update_list()
@@ -155,6 +159,7 @@ class WineMain(QMainWindow):
         msg.exec_()
         
     def install_wine(self):
+        os.chdir(sys.path[0])
         subprocess.call(['sh', './bash/wine.sh'])
         msg = QMessageBox()
         msg.setWindowTitle("Completed")
