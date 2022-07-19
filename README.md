@@ -6,6 +6,16 @@ Easily manage your wine with this application And enjoy playing on Linux.
 You can have several wine prefixes at the same time. Easily install and run your games and softwares. Easily download and install vulkan and prerequisites.
 
 ## Installation
+ - Simple Way
+
+Open Terminal in project directory and enter
+
+ ```bash
+python3 installer.py
+```
+
+ - Second Way
+ 
 First install these packages
 ```bash
 sudo apt install python3-pip python3-venv
